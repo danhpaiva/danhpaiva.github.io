@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Daniel Paiva — Engenheiro de Software .NET | Cloud | Microserviços',
+  description = 'Engenheiro de Software focado no ecossistema .NET e especialista em Arquitetura de Sistemas Distribuídos. Soluções escaláveis com .NET 10, AWS, Docker, Kafka e microserviços.',
+  image = '/og-image.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniel Paiva",
+        "jobTitle": "Engenheiro de Software",
+        "description": "Especialista em .NET, Arquitetura de Sistemas Distribuídos e Cloud",
+        "url": "https://danhpaiva.github.io",
+        "sameAs": [
+          "https://www.linkedin.com/in/danhpaiva/",
+          "https://github.com/danhpaiva"
+        ],
+        "knowsAbout": [".NET", "C#", "Microserviços", "AWS", "Docker", "Kafka", "Redis", "SQL Server"]
+      }
+    </script>
+  </head>
+
+  <body>
+    <slot />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

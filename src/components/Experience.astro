@@ -1,0 +1,295 @@
+---
+const jobs = [
+  {
+    role: 'Engenheiro de Software .NET',
+    subtitle: 'Cloud Solutions | Web API & Microservices',
+    company: 'Base2 Tecnologia',
+    period: 'Jan 2026 — Presente',
+    duration: '6 meses',
+    location: 'Belo Horizonte, MG · Remoto',
+    current: true,
+    color: 'blue',
+    highlights: [
+      'Arquitetura de microserviços com <strong>.NET 10</strong> do zero, aplicando Clean Architecture e separação de responsabilidades.',
+      'Autenticação e autorização robusta com <strong>AWS Cognito + JwtBearer</strong> para gestão segura de identidades.',
+      'Camada de persistência de alta performance com <strong>Dapper + SQL Server</strong>, otimizando tempo de resposta das APIs.',
+      'Integração com <strong>Amazon S3</strong> para storage automatizado e <strong>Amazon SES</strong> para comunicação transacional.',
+      'Infraestrutura como Código (IaC) com <strong>CloudFormation (YAML)</strong> e monitoramento via Application Insights.',
+      'Logs estruturados com <strong>Serilog</strong>, Rate Limiting para proteção e auditoria contínua com Sonar.',
+      'Gestão de migrações via <strong>Flyway</strong> e containerização com <strong>Docker</strong> para Dev, QA e Stage.',
+      'Comunicação legada segura com servidores de arquivos via <strong>SFTP (SSH.NET)</strong>.',
+    ],
+    stack: ['.NET 10', 'ASP.NET Core', 'C#', 'Dapper', 'SQL Server', 'AWS S3', 'AWS SES', 'Cognito', 'CloudFormation', 'Docker', 'Flyway', 'Serilog', 'Sonar'],
+  },
+  {
+    role: 'Professor de Ensino Superior',
+    subtitle: 'Cursos de Tecnologia da Informação',
+    company: 'Centro Universitário Una',
+    period: 'Mar 2023 — Presente',
+    duration: '3 anos 4 meses',
+    location: 'Belo Horizonte, MG · Presencial',
+    current: true,
+    color: 'purple',
+    highlights: [
+      'Docência para cursos de <strong>Engenharia de Software, Ciência da Computação e Sistemas de Informação</strong>.',
+      'Lecionou Engenharia de Software & Qualidade: metodologias ágeis, UML, métricas e Design Patterns.',
+      'Instrução em lógica de programação, estruturas de dados, <strong>POO</strong> e desenvolvimento Web/Mobile.',
+      'Disciplinas de Infraestrutura: sistemas distribuídos, segurança cibernética e arquitetura de computadores.',
+      'Mentoria de alunos na construção de raciocínio lógico e arquitetura de sistemas orientada ao mercado.',
+    ],
+    stack: ['Engenharia de Software', 'Design Patterns', 'POO', 'Sistemas Distribuídos', 'UML', 'Agilidade', 'Segurança'],
+  },
+  {
+    role: 'Desenvolvedor de Sistemas Sênior',
+    subtitle: '',
+    company: 'AeC',
+    period: 'Jul 2022 — Jun 2024',
+    duration: '2 anos',
+    location: 'Belo Horizonte, MG · Híbrido',
+    current: false,
+    color: 'cyan',
+    highlights: [
+      '<strong>Code review</strong> e apoio estratégico nas decisões técnicas do time de desenvolvimento.',
+      'Estimativas de prazo com <strong>planning poker</strong> e priorização de backlog.',
+      'Manutenção de ambientes <strong>Docker</strong> e suporte a pipelines com <strong>Azure DevOps</strong>.',
+      'Desenvolvimento com <strong>.NET Core 3.1 / .NET 8+</strong>, CI/CD, SonarQube e TDD.',
+      'Mensageria com <strong>RabbitMQ</strong>, cache com <strong>Redis</strong> e arquitetura DDD.',
+      'Modelagem de dados com <strong>SQL e NoSQL</strong>.',
+    ],
+    stack: ['.NET 8', 'C#', 'Azure DevOps', 'Docker', 'RabbitMQ', 'Redis', 'TDD', 'DDD', 'SonarCloud', 'SQL', 'MongoDB'],
+  },
+];
+---
+
+<section id="experiencia" class="section" aria-labelledby="exp-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">trajetória profissional</p>
+      <h2 class="section-title" id="exp-title">Experiência</h2>
+      <p class="section-subtitle">Construindo soluções de alto impacto em tecnologia e educação.</p>
+    </div>
+
+    <div class="timeline">
+      {jobs.map((job, i) => (
+        <article
+          class={`timeline-item reveal`}
+          style={`transition-delay:${i * 0.12}s`}
+          aria-label={`${job.role} na ${job.company}`}
+        >
+          <!-- Connector dot -->
+          <div class={`timeline-dot dot-${job.color}`} aria-hidden="true">
+            {job.current && <div class="dot-pulse"></div>}
+          </div>
+
+          <div class="timeline-card card">
+            <!-- Header -->
+            <div class="exp-header">
+              <div class="exp-meta">
+                <div class="exp-company-row">
+                  <span class="exp-company">{job.company}</span>
+                  {job.current && <span class="current-badge">Atual</span>}
+                </div>
+                <h3 class="exp-role">
+                  {job.role}
+                  {job.subtitle && <span class="exp-subtitle"> · {job.subtitle}</span>}
+                </h3>
+                <div class="exp-info">
+                  <span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                      <line x1="16" y1="2" x2="16" y2="6"/>
+                      <line x1="8" y1="2" x2="8" y2="6"/>
+                      <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    {job.period}
+                  </span>
+                  <span class="exp-duration">· {job.duration}</span>
+                  <span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    {job.location}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Highlights -->
+            <ul class="exp-highlights">
+              {job.highlights.map((h) => (
+                <li set:html={h} />
+              ))}
+            </ul>
+
+            <!-- Stack tags -->
+            <div class="exp-stack">
+              {job.stack.map((tech) => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: 2.5rem;
+  }
+
+  /* Vertical line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.65rem;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--blue) 0%,
+      var(--purple) 50%,
+      var(--cyan) 100%
+    );
+    opacity: 0.3;
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2rem;
+    top: 1.75rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-base);
+    z-index: 1;
+  }
+
+  .dot-blue  { background: var(--blue); box-shadow: 0 0 10px rgba(88,166,255,0.5); }
+  .dot-purple { background: var(--purple); box-shadow: 0 0 10px rgba(188,140,255,0.5); }
+  .dot-cyan  { background: var(--cyan); box-shadow: 0 0 10px rgba(57,208,216,0.5); }
+
+  .dot-pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    animation: pulse-ring 2s ease infinite;
+    opacity: 0.6;
+  }
+
+  /* Card internals */
+  .exp-header { margin-bottom: 1.25rem; }
+  .exp-company-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .exp-company {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blue);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .current-badge {
+    padding: 0.15rem 0.55rem;
+    background: rgba(63,185,80,0.12);
+    border: 1px solid rgba(63,185,80,0.3);
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: 0.04em;
+  }
+
+  .exp-role {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+  }
+
+  .exp-subtitle {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+  }
+
+  .exp-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .exp-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .exp-duration { color: var(--text-muted); }
+
+  /* Highlights */
+  .exp-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .exp-highlights li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .exp-highlights li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.8rem;
+    top: 0.15em;
+  }
+
+  .exp-highlights li :global(strong) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Stack */
+  .exp-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .timeline { padding-left: 1.75rem; }
+    .timeline-dot { left: -1.5rem; }
+  }
+</style>
