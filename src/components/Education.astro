@@ -1,0 +1,155 @@
+---
+import { education } from '../data/education';
+---
+
+<section id="educacao" class="section" aria-labelledby="edu-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">formação acadêmica</p>
+      <h2 class="section-title" id="edu-title">Educação</h2>
+      <p class="section-subtitle">Base acadêmica sólida, do desenvolvimento ao nível de especialista em arquitetura distribuída.</p>
+    </div>
+
+    <div class="edu-grid">
+      {education.map((edu, i) => (
+        <article
+          class={`edu-card card reveal`}
+          style={`transition-delay:${i * 0.15}s`}
+          aria-label={`${edu.degree} em ${edu.field} — ${edu.institution}`}
+        >
+          <div class={`edu-accent accent-${edu.color}`} aria-hidden="true"></div>
+
+          <div class="edu-header">
+            <span class="edu-icon" aria-hidden="true">{edu.icon}</span>
+            <div>
+              <span class={`edu-level level-${edu.color}`}>{edu.level}</span>
+              <p class="edu-institution">{edu.institution}</p>
+            </div>
+          </div>
+
+          <h3 class="edu-field">{edu.field}</h3>
+          <p class="edu-degree">{edu.degree}</p>
+
+          <p class="edu-period">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            {edu.period}
+          </p>
+
+          <p class="edu-desc">{edu.description}</p>
+
+          <div class="edu-skills">
+            {edu.skills.map((skill) => (
+              <span class={`tag ${edu.color === 'cyan' ? 'cyan' : ''}`}>{skill}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .edu-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .edu-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .accent-blue { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+  .accent-cyan { background: linear-gradient(90deg, var(--cyan), var(--purple)); }
+
+  .edu-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .edu-icon { font-size: 2rem; }
+
+  .edu-institution {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .edu-level {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.6rem;
+    border-radius: 100px;
+    margin-bottom: 0.35rem;
+  }
+
+  .level-blue {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.25);
+    color: var(--blue);
+  }
+
+  .level-cyan {
+    background: rgba(57,208,216,0.1);
+    border: 1px solid rgba(57,208,216,0.25);
+    color: var(--cyan);
+  }
+
+  .edu-field {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .edu-degree {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .edu-period {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .edu-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .edu-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+</style>

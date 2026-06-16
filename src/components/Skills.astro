@@ -1,0 +1,153 @@
+---
+import { skillGroups, techBadges } from '../data/skills';
+---
+
+<section id="skills" class="section" aria-labelledby="skills-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">stack técnica</p>
+      <h2 class="section-title" id="skills-title">Skills & Tecnologias</h2>
+      <p class="section-subtitle">Especialização profunda no ecossistema .NET com forte domínio em cloud, containers e arquiteturas modernas.</p>
+    </div>
+
+    <!-- Quick badges -->
+    <div class="badges-row reveal" style="margin-bottom:3rem">
+      {techBadges.map((badge, i) => (
+        <span class={`tag ${i % 5 === 1 ? 'cyan' : i % 5 === 2 ? 'green' : i % 5 === 3 ? 'purple' : i % 5 === 4 ? 'orange' : ''}`}>
+          {badge}
+        </span>
+      ))}
+    </div>
+
+    <!-- Skill groups with bars -->
+    <div class="skills-grid">
+      {skillGroups.map((group, gi) => (
+        <div class={`skill-group card reveal`} style={`transition-delay:${gi * 0.08}s`}>
+          <div class="skill-group-header">
+            <span class="skill-icon" aria-hidden="true">{group.icon}</span>
+            <h3 class="skill-category">{group.category}</h3>
+          </div>
+          <ul class="skill-list" role="list">
+            {group.skills.map((skill) => (
+              <li class="skill-item">
+                <div class="skill-name-row">
+                  <span class="skill-name">{skill.name}</span>
+                  <span class="skill-pct">{skill.level}%</span>
+                </div>
+                <div
+                  class={`skill-bar-bg`}
+                  role="progressbar"
+                  aria-valuenow={skill.level}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={`${skill.name}: ${skill.level}%`}
+                >
+                  <div
+                    class={`skill-bar-fill fill-${group.color}`}
+                    data-width={skill.level}
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-icon { font-size: 1.3rem; }
+
+  .skill-category {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .skill-name-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.35rem;
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .skill-pct {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .skill-bar-bg {
+    height: 4px;
+    background: var(--bg-surface);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fill-blue   { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+  .fill-cyan   { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+  .fill-green  { background: linear-gradient(90deg, var(--green), var(--cyan)); }
+  .fill-purple { background: linear-gradient(90deg, var(--purple), var(--blue)); }
+  .fill-orange { background: linear-gradient(90deg, var(--orange), var(--red)); }
+</style>
+
+<script>
+  // Animate bars when visible
+  const bars = document.querySelectorAll<HTMLElement>('.skill-bar-fill');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          const w = el.dataset.width ?? '0';
+          el.style.width = `${w}%`;
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  bars.forEach((bar) => observer.observe(bar));
+</script>

@@ -1,0 +1,213 @@
+---
+import { stats, location, aboutLinks } from '../data/about';
+---
+
+<section id="sobre" class="section" aria-labelledby="sobre-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">sobre mim</p>
+      <h2 class="section-title" id="sobre-title">Quem sou eu</h2>
+    </div>
+
+    <div class="about-grid">
+      <!-- Bio -->
+      <div class="about-bio reveal">
+        <p>
+          Sou Engenheiro de Software com foco profundo no ecossistema <strong>.NET</strong> e especialização em
+          <strong>Arquitetura de Sistemas Distribuídos</strong>. Minha atuação é pautada pela construção de soluções
+          escaláveis e resilientes, unindo o domínio técnico do .NET 10 à eficiência de infraestruturas modernas
+          baseadas em cloud e containers.
+        </p>
+        <p>
+          Atualmente na <strong>Base2 Tecnologia</strong>, lidero o desenvolvimento de ecossistemas de APIs de alta
+          performance com integração nativa à <strong>AWS</strong>, segurança robusta via Cognito, e esteiras de CI/CD
+          com qualidade garantida via Sonar e Application Insights.
+        </p>
+        <p>
+          Em paralelo, atuo como <strong>Professor de Ensino Superior</strong> no Centro Universitário Una,
+          onde leciono Engenharia de Software, Sistemas Distribuídos e Arquitetura para cursos de Computação — sempre
+          buscando reduzir o gap entre teoria acadêmica e a demanda real do mercado.
+        </p>
+
+        <div class="about-links">
+          {aboutLinks.map((link) => (
+            <a
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class="about-link"
+            >
+              <Fragment set:html={link.icon} />
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="about-stats reveal" style="transition-delay:0.15s">
+        {stats.map((stat) => (
+          <div class="stat-card">
+            <span class="stat-value">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+
+        <!-- Location -->
+        <div class="location-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <div>
+            <strong>{location.city}</strong>
+            <span>{location.region}</span>
+          </div>
+        </div>
+
+        <!-- Work mode -->
+        <div class="location-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+          </svg>
+          <div>
+            <strong>{location.workMode}</strong>
+            <span>{location.workModeDetail}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .about-bio p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.02rem;
+  }
+
+  .about-bio strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .about-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+  }
+
+  .about-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: color var(--transition);
+  }
+
+  .about-link:hover { color: var(--blue); }
+
+  /* Stats */
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .stat-card:hover {
+    border-color: var(--border-glow);
+    transform: translateY(-2px);
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    background: var(--gradient-blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .location-card {
+    grid-column: span 2;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .location-card div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .location-card strong {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+  }
+
+  .location-card span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .location-card { grid-column: span 2; }
+  }
+
+  @media (max-width: 560px) {
+    .about-stats {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
