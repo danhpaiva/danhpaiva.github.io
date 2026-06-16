@@ -282,6 +282,31 @@ img { max-width: 100%; }
   animation: fadeUp 0.7s ease both;
 }
 
+/* ─── Acessibilidade: respeita preferência de movimento reduzido ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Garante que elementos com reveal aparecem diretamente sem transição */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Remove animação de cursor piscando */
+  .cursor {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
 /* Reveal on scroll */
 .reveal {
   opacity: 0;
