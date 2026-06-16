@@ -1,8 +1,8 @@
 import type { Stat, LocationInfo, AboutLink } from './types';
 
 export const stats: Stat[] = [
-  { value: '6+',   label: 'Anos de Experiência' },
-  { value: '3+',   label: 'Anos como Professor' },
+  { value: '6+',   label: 'Anos de Experiência', startYear: 2019 },
+  { value: '3+',   label: 'Anos como Professor',  startYear: 2010 },
   { value: '.NET', label: 'Especialização Core' },
   { value: 'AWS',  label: 'Cloud Principal' },
 ];

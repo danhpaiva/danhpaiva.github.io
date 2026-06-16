@@ -24,6 +24,8 @@ export interface SocialLink {
 export interface Stat {
   value: string;
   label: string;
+  /** Se informado, o valor é calculado em runtime: (anoAtual - startYear)+ */
+  startYear?: number;
 }
 
 export interface LocationInfo {
