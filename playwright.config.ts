@@ -23,8 +23,9 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
     {
+      // Pixel 5 usa Chromium — não exige WebKit instalado
       name: 'mobile',
-      use: { ...devices['iPhone 13'] },
+      use: { ...devices['Pixel 5'] },
     },
   ],
 
