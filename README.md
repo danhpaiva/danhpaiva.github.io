@@ -6,6 +6,7 @@
 Engenheiro de Software .NET | Sistemas Distribuídos | Cloud | Microserviços
 
 [![Deploy](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/deploy.yml)
+[![Lighthouse CI](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/lighthouse.yml)
 [![Astro](https://img.shields.io/badge/Astro-5.x-BC52EE?logo=astro&logoColor=white)](https://astro.build)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-22863a?logo=github)](https://danhpaiva.github.io)
 [![Node](https://img.shields.io/badge/Node.js-22.x-339933?logo=node.js&logoColor=white)](https://nodejs.org)
@@ -40,8 +41,10 @@ Currículo web estático construído com **Astro 5**, design **dark tech** respo
 | [Astro 5](https://astro.build) | Framework — output 100% estático |
 | CSS Custom Properties | Estilização sem frameworks |
 | Google Fonts (Inter + JetBrains Mono) | Tipografia |
-| GitHub Actions | CI/CD automatizado |
+| GitHub Actions | CI/CD + Lighthouse CI automatizados |
 | GitHub Pages | Hospedagem |
+| `@astrojs/sitemap` | Sitemap gerado automaticamente |
+| Lighthouse CI (`treosh/lighthouse-ci-action`) | Auditoria de performance e acessibilidade |
 
 ---
 
@@ -83,7 +86,8 @@ npm run dev
 danhpaiva.github.io/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          # CI/CD — GitHub Actions
+│       ├── deploy.yml          # CI/CD — build + deploy no GitHub Pages
+│       └── lighthouse.yml      # Lighthouse CI — auditoria de qualidade
 ├── public/
 │   ├── favicon.svg
 │   └── photo.jpg               # Foto de perfil
