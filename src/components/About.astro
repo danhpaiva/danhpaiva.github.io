@@ -48,7 +48,12 @@ import { stats, location, aboutLinks } from '../data/about';
       <div class="about-stats reveal" style="transition-delay:0.15s">
         {stats.map((stat) => (
           <div class="stat-card">
-            <span class="stat-value">{stat.value}</span>
+            <span
+              class="stat-value"
+              data-start-year={stat.startYear ?? null}
+            >
+              {stat.value}
+            </span>
             <span class="stat-label">{stat.label}</span>
           </div>
         ))}
@@ -211,3 +216,14 @@ import { stats, location, aboutLinks } from '../data/about';
     }
   }
 </style>
+
+<script>
+  const currentYear = new Date().getFullYear();
+
+  document.querySelectorAll<HTMLElement>('.stat-value[data-start-year]').forEach((el) => {
+    const startYear = Number(el.dataset.startYear);
+    if (!startYear) return;
+    const years = currentYear - startYear;
+    el.textContent = `${years}+`;
+  });
+</script>
