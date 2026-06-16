@@ -29,24 +29,29 @@ test.describe('Links externos', () => {
 
   // ─── Hrefs corretos ───────────────────────────────────────────────────────
 
+  // Escopados ao #contato — garante visibilidade em desktop e mobile
   test('link do LinkedIn aponta para o perfil correto', async ({ page }) => {
-    const linkedinLinks = page.locator('a[href="https://www.linkedin.com/in/danhpaiva/"]');
-    await expect(linkedinLinks.first()).toBeVisible();
+    await expect(
+      page.locator('#contato a[href="https://www.linkedin.com/in/danhpaiva/"]')
+    ).toBeVisible();
   });
 
   test('link do GitHub aponta para o perfil correto', async ({ page }) => {
-    const githubLinks = page.locator('a[href="https://github.com/danhpaiva"]');
-    await expect(githubLinks.first()).toBeVisible();
+    await expect(
+      page.locator('#contato a[href="https://github.com/danhpaiva"]')
+    ).toBeVisible();
   });
 
   test('link de e-mail tem href mailto correto', async ({ page }) => {
-    const emailLink = page.locator('a[href="mailto:danpaiva@live.com"]');
-    await expect(emailLink.first()).toBeVisible();
+    await expect(
+      page.locator('#contato a[href="mailto:danpaiva@live.com"]')
+    ).toBeVisible();
   });
 
   test('link do Telegram aponta para o canal correto', async ({ page }) => {
-    const telegramLink = page.locator('a[href="https://t.me/danhpaiva"]');
-    await expect(telegramLink.first()).toBeVisible();
+    await expect(
+      page.locator('#contato a[href="https://t.me/danhpaiva"]')
+    ).toBeVisible();
   });
 
   // ─── Links internos (âncoras) ─────────────────────────────────────────────
