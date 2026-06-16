@@ -6,3 +6,7 @@ node_modules/
 .DS_Store
 *.log
 .astro/
+
+# Playwright
+playwright-report/
+test-results/

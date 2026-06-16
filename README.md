@@ -7,6 +7,7 @@ Engenheiro de Software .NET | Sistemas Distribuídos | Cloud | Microserviços
 
 [![Deploy](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/deploy.yml)
 [![Lighthouse CI](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/lighthouse.yml)
+[![E2E Tests](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/e2e.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/e2e.yml)
 [![Astro](https://img.shields.io/badge/Astro-5.x-BC52EE?logo=astro&logoColor=white)](https://astro.build)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-22863a?logo=github)](https://danhpaiva.github.io)
 [![Node](https://img.shields.io/badge/Node.js-22.x-339933?logo=node.js&logoColor=white)](https://nodejs.org)
@@ -45,6 +46,7 @@ Currículo web estático construído com **Astro 5**, design **dark tech** respo
 | GitHub Pages | Hospedagem |
 | `@astrojs/sitemap` | Sitemap gerado automaticamente |
 | Lighthouse CI (`treosh/lighthouse-ci-action`) | Auditoria de performance e acessibilidade |
+| Playwright | Testes E2E — navegação, seções, links e SEO |
 
 ---
 
@@ -77,6 +79,9 @@ npm run dev
 | `npm run dev` | Servidor local com hot-reload |
 | `npm run build` | Gera o build estático em `dist/` |
 | `npm run preview` | Prévia local do build gerado |
+| `npm run test:e2e` | Roda os testes E2E (requer build antes) |
+| `npm run test:e2e:ui` | Abre o Playwright UI para debug visual |
+| `npm run test:e2e:report` | Abre o relatório HTML da última execução |
 
 ---
 
