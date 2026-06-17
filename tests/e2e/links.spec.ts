@@ -32,7 +32,7 @@ test.describe('Links externos', () => {
   // Escopados ao #contato — garante visibilidade em desktop e mobile
   test('link do LinkedIn aponta para o perfil correto', async ({ page }) => {
     await expect(
-      page.locator('#contato a[href="https://www.linkedin.com/in/danhpaiva/"]')
+      page.locator('#contato a[href="https://www.linkedin.com/in/danhpaiva/?skipRedirect=true"]')
     ).toBeVisible();
   });
 
