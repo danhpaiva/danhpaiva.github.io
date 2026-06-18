@@ -10,7 +10,6 @@ import { stats, location, aboutLinks } from '../data/about';
     </div>
 
     <div class="about-grid">
-      <!-- Bio -->
       <div class="about-bio reveal">
         <p>
           Sou Engenheiro de Software com foco profundo no ecossistema <strong>.NET</strong> e especialização em
@@ -25,7 +24,7 @@ import { stats, location, aboutLinks } from '../data/about';
         </p>
         <p>
           Em paralelo, atuo como <strong>Professor de Ensino Superior</strong> no Centro Universitário Una,
-          onde leciono Engenharia de Software, Sistemas Distribuídos e Arquitetura para cursos de Computação — sempre
+          onde leciono Engenharia de Software, Sistemas Distribuídos e Arquitetura para cursos de Computação —
           buscando reduzir o gap entre teoria acadêmica e a demanda real do mercado.
         </p>
 
@@ -44,41 +43,41 @@ import { stats, location, aboutLinks } from '../data/about';
         </div>
       </div>
 
-      <!-- Stats -->
-      <div class="about-stats reveal" style="transition-delay:0.15s">
-        {stats.map((stat) => (
-          <div class="stat-card">
-            <span
-              class="stat-value"
-              data-start-year={stat.startYear ?? null}
-            >
-              {stat.value}
-            </span>
-            <span class="stat-label">{stat.label}</span>
-          </div>
-        ))}
-
-        <!-- Location -->
-        <div class="location-card">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" aria-hidden="true">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          <div>
-            <strong>{location.city}</strong>
-            <span>{location.region}</span>
-          </div>
+      <div class="about-sidebar reveal" style="transition-delay:0.12s">
+        <div class="stats-grid">
+          {stats.map((stat) => (
+            <div class="stat-card">
+              <span
+                class="stat-value"
+                data-start-year={stat.startYear ?? null}
+              >
+                {stat.value}
+              </span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
         </div>
 
-        <!-- Work mode -->
-        <div class="location-card">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8M12 17v4"/>
-          </svg>
-          <div>
-            <strong>{location.workMode}</strong>
-            <span>{location.workModeDetail}</span>
+        <div class="meta-list">
+          <div class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div>
+              <strong>{location.city}</strong>
+              <span>{location.region}</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+            <div>
+              <strong>{location.workMode}</strong>
+              <span>{location.workModeDetail}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -89,8 +88,8 @@ import { stats, location, aboutLinks } from '../data/about';
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 3rem;
+    grid-template-columns: 1fr 300px;
+    gap: 4rem;
     align-items: start;
   }
 
@@ -102,8 +101,8 @@ import { stats, location, aboutLinks } from '../data/about';
 
   .about-bio p {
     color: var(--text-secondary);
-    line-height: 1.8;
-    font-size: 1.02rem;
+    line-height: 1.85;
+    font-size: 0.975rem;
   }
 
   .about-bio strong {
@@ -114,104 +113,112 @@ import { stats, location, aboutLinks } from '../data/about';
   .about-links {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    padding-top: 0.5rem;
+    gap: 0.6rem;
+    padding-top: 0.75rem;
   }
 
   .about-link {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
     transition: color var(--transition);
   }
 
-  .about-link:hover { color: var(--blue); }
+  .about-link:hover { color: var(--text-primary); }
 
-  /* Stats */
-  .about-stats {
+  /* Sidebar */
+  .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   .stat-card {
     background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
     padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.4rem;
-    transition: border-color var(--transition), transform var(--transition);
-  }
-
-  .stat-card:hover {
-    border-color: var(--border-glow);
-    transform: translateY(-2px);
+    gap: 0.35rem;
   }
 
   .stat-value {
     font-size: 1.75rem;
     font-weight: 800;
     font-family: var(--font-mono);
-    background: var(--gradient-blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
+    letter-spacing: -0.04em;
   }
 
   .stat-label {
-    font-size: 0.78rem;
-    color: var(--text-secondary);
+    font-size: 0.72rem;
+    color: var(--text-muted);
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.4;
   }
 
-  .location-card {
-    grid-column: span 2;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-  }
-
-  .location-card div {
+  .meta-list {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0.75rem;
   }
 
-  .location-card strong {
-    font-size: 0.9rem;
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+  }
+
+  .meta-item svg { flex-shrink: 0; }
+
+  .meta-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .meta-item strong {
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--text-primary);
   }
 
-  .location-card span {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+  .meta-item span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
   }
 
   @media (max-width: 900px) {
     .about-grid {
       grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
 
-    .about-stats {
+    .stats-grid {
       grid-template-columns: repeat(4, 1fr);
     }
-
-    .location-card { grid-column: span 2; }
   }
 
   @media (max-width: 560px) {
-    .about-stats {
+    .stats-grid {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -223,7 +230,6 @@ import { stats, location, aboutLinks } from '../data/about';
   document.querySelectorAll<HTMLElement>('.stat-value[data-start-year]').forEach((el) => {
     const startYear = Number(el.dataset.startYear);
     if (!startYear) return;
-    const years = currentYear - startYear;
-    el.textContent = `${years}+`;
+    el.textContent = `${currentYear - startYear}+`;
   });
 </script>

@@ -7,94 +7,90 @@ test.describe('Seções do currículo', () => {
 
   // ─── Sobre ────────────────────────────────────────────────────────────────
 
-  test('seção Sobre está presente e visível', async ({ page }) => {
-    const section = page.locator('#sobre');
-    await expect(section).toBeVisible();
-    await expect(section.getByRole('heading', { name: 'Quem sou eu' })).toBeVisible();
+  test('célula Sobre está presente e visível', async ({ page }) => {
+    await expect(page.locator('#sobre')).toBeVisible();
   });
 
-  test('Sobre exibe os 4 cards de stats', async ({ page }) => {
-    const stats = page.locator('#sobre .stat-card');
+  test('Sobre contém texto da bio', async ({ page }) => {
+    await expect(page.locator('#sobre')).toContainText('.NET');
+  });
+
+  test('exibe os 4 cards de stats', async ({ page }) => {
+    const stats = page.locator('.cell-stats .stat');
     await expect(stats).toHaveCount(4);
   });
 
-  test('Sobre exibe cidade e modo de trabalho', async ({ page }) => {
-    await expect(page.locator('#sobre')).toContainText('Belo Horizonte');
-    await expect(page.locator('#sobre')).toContainText('Remoto');
+  test('exibe cidade e modo de trabalho', async ({ page }) => {
+    await expect(page.locator('.cell-location')).toContainText('Belo Horizonte');
+    await expect(page.locator('.cell-location')).toContainText('Remoto');
   });
 
   // ─── Experiência ──────────────────────────────────────────────────────────
 
-  test('seção Experiência está presente', async ({ page }) => {
-    const section = page.locator('#experiencia');
-    await expect(section).toBeVisible();
-    await expect(section.getByRole('heading', { name: 'Experiência' })).toBeVisible();
+  test('célula Experiência está presente', async ({ page }) => {
+    await expect(page.locator('#experiencia')).toBeVisible();
+    await expect(page.locator('#experiencia')).toContainText('Experiência');
   });
 
-  test('timeline exibe os 3 empregos', async ({ page }) => {
-    const jobs = page.locator('#experiencia .timeline-item');
+  test('exibe os 3 empregos', async ({ page }) => {
+    const jobs = page.locator('#experiencia .exp-item');
     await expect(jobs).toHaveCount(3);
   });
 
-  test('Base2 Tecnologia está na timeline', async ({ page }) => {
+  test('Base2 Tecnologia está na lista', async ({ page }) => {
     await expect(page.locator('#experiencia')).toContainText('Base2 Tecnologia');
   });
 
-  test('AeC está na timeline', async ({ page }) => {
+  test('AeC está na lista', async ({ page }) => {
     await expect(page.locator('#experiencia')).toContainText('AeC');
   });
 
-  test('Centro Universitário Una está na timeline', async ({ page }) => {
+  test('Centro Universitário Una está na lista', async ({ page }) => {
     await expect(page.locator('#experiencia')).toContainText('Centro Universitário Una');
   });
 
   // ─── Skills ───────────────────────────────────────────────────────────────
 
-  test('seção Skills está presente', async ({ page }) => {
-    const section = page.locator('#skills');
-    await expect(section).toBeVisible();
-    await expect(section.getByRole('heading', { name: 'Skills & Tecnologias' })).toBeVisible();
+  test('célula Skills está presente', async ({ page }) => {
+    await expect(page.locator('#skills')).toBeVisible();
+    await expect(page.locator('#skills')).toContainText('Skills');
   });
 
   test('exibe os 6 grupos de skills', async ({ page }) => {
-    const groups = page.locator('#skills .skill-group');
+    const groups = page.locator('#skills .skill-grp');
     await expect(groups).toHaveCount(6);
   });
 
-  test('barras de skill estão presentes', async ({ page }) => {
-    const bars = page.locator('#skills .skill-bar-bg');
-    await expect(bars).toHaveCount(await bars.count());
-    // Garante que há pelo menos 10 barras (5 skills × 2 grupos mínimo)
-    expect(await bars.count()).toBeGreaterThanOrEqual(10);
+  test('exibe pelo menos 10 itens de skill', async ({ page }) => {
+    const items = page.locator('#skills .skill-grp li');
+    expect(await items.count()).toBeGreaterThanOrEqual(10);
   });
 
   // ─── Educação ─────────────────────────────────────────────────────────────
 
-  test('seção Educação está presente', async ({ page }) => {
-    const section = page.locator('#educacao');
-    await expect(section).toBeVisible();
-    await expect(section.getByRole('heading', { name: 'Educação' })).toBeVisible();
+  test('célula Educação está presente', async ({ page }) => {
+    await expect(page.locator('#educacao')).toBeVisible();
+    await expect(page.locator('#educacao')).toContainText('Educação');
   });
 
-  test('exibe os 2 cards de formação', async ({ page }) => {
-    const cards = page.locator('#educacao .edu-card');
+  test('exibe os 2 itens de formação', async ({ page }) => {
+    const cards = page.locator('#educacao .edu-item');
     await expect(cards).toHaveCount(2);
   });
 
-  test('PUC Minas está nos cards', async ({ page }) => {
+  test('PUC Minas está na educação', async ({ page }) => {
     await expect(page.locator('#educacao')).toContainText('PUC Minas');
   });
 
   // ─── Contato ──────────────────────────────────────────────────────────────
 
-  test('seção Contato está presente', async ({ page }) => {
-    const section = page.locator('#contato');
-    await expect(section).toBeVisible();
-    await expect(section.getByRole('heading', { name: 'Entre em Contato' })).toBeVisible();
+  test('célula Contato está presente', async ({ page }) => {
+    await expect(page.locator('#contato')).toBeVisible();
+    await expect(page.locator('#contato')).toContainText('Contato');
   });
 
   test('exibe os 4 links de contato', async ({ page }) => {
-    const links = page.locator('#contato .contact-link');
+    const links = page.locator('#contato .contact-item');
     await expect(links).toHaveCount(4);
   });
 });

@@ -5,7 +5,7 @@ import { navLinks } from '../data/nav';
 <nav id="nav" aria-label="Navegação principal">
   <div class="container nav-inner">
     <a href="/" class="nav-logo" aria-label="Daniel Paiva">
-      <span class="logo-bracket">&lt;</span>dp<span class="logo-bracket">/&gt;</span>
+      dp
     </a>
 
     <ul class="nav-links" role="list">
@@ -20,7 +20,7 @@ import { navLinks } from '../data/nav';
       href="https://www.linkedin.com/in/danhpaiva/?skipRedirect=true"
       target="_blank"
       rel="noopener noreferrer"
-      class="btn btn-outline nav-cta"
+      class="nav-cta"
     >
       Contato
     </a>
@@ -30,7 +30,6 @@ import { navLinks } from '../data/nav';
     </button>
   </div>
 
-  <!-- Mobile menu -->
   <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
     <ul role="list">
       {navLinks.map((link) => (
@@ -41,10 +40,9 @@ import { navLinks } from '../data/nav';
           href="https://www.linkedin.com/in/danhpaiva/?skipRedirect=true"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-primary"
-          style="width:100%; justify-content:center; margin-top:0.5rem;"
+          class="nav-mobile-cta"
         >
-          LinkedIn
+          LinkedIn →
         </a>
       </li>
     </ul>
@@ -58,62 +56,71 @@ import { navLinks } from '../data/nav';
     left: 0;
     right: 0;
     z-index: 100;
-    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease;
     border-bottom: 1px solid transparent;
   }
 
   nav.scrolled {
-    background: rgba(7, 11, 20, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(244, 242, 237, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-color: var(--border);
   }
 
   .nav-inner {
     display: flex;
     align-items: center;
-    height: 68px;
+    height: 64px;
     gap: 2rem;
   }
 
   .nav-logo {
     font-family: var(--font-mono);
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--text-primary);
     text-decoration: none;
-    white-space: nowrap;
+    letter-spacing: 0.05em;
     transition: color var(--transition);
   }
 
-  .nav-logo:hover { color: var(--blue); }
-  .logo-bracket { color: var(--blue); }
+  .nav-logo:hover { color: var(--text-secondary); }
 
   .nav-links {
     display: flex;
     list-style: none;
-    gap: 0.25rem;
+    gap: 0rem;
     margin-left: auto;
   }
 
   .nav-link {
-    padding: 0.4rem 0.85rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-muted);
     text-decoration: none;
-    border-radius: 6px;
-    transition: color var(--transition), background var(--transition);
+    transition: color var(--transition);
   }
 
-  .nav-link:hover {
-    color: var(--text-primary);
-    background: rgba(88,166,255,0.08);
+  .nav-link:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--accent-border);
+    border-radius: 5px;
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+    white-space: nowrap;
   }
 
-  .nav-cta { font-size: 0.85rem; padding: 0.5rem 1.1rem; }
+  .nav-cta:hover {
+    background: var(--accent-subtle);
+    border-color: var(--accent);
+  }
 
-  /* Toggle */
   .nav-toggle {
     display: none;
     flex-direction: column;
@@ -127,41 +134,48 @@ import { navLinks } from '../data/nav';
 
   .nav-toggle span {
     display: block;
-    width: 22px;
-    height: 2px;
+    width: 20px;
+    height: 1.5px;
     background: var(--text-secondary);
-    border-radius: 2px;
-    transition: all 0.3s ease;
+    border-radius: 1px;
+    transition: all 0.25s ease;
   }
 
-  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
   .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
-  /* Mobile menu */
   .nav-mobile {
     display: none;
-    background: var(--bg-card);
+    background: rgba(244, 242, 237, 0.97);
     border-top: 1px solid var(--border);
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem 1.5rem;
   }
 
-  .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 0.25rem; }
 
   .nav-mobile-link {
     display: block;
-    padding: 0.65rem 1rem;
+    padding: 0.6rem 0.5rem;
     color: var(--text-secondary);
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: color var(--transition), background var(--transition);
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: color var(--transition);
   }
 
-  .nav-mobile-link:hover {
-    color: var(--text-primary);
-    background: rgba(88,166,255,0.08);
+  .nav-mobile-link:hover { color: var(--text-primary); }
+
+  .nav-mobile-cta {
+    display: block;
+    padding: 0.6rem 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-family: var(--font-mono);
+    transition: color var(--transition);
+    margin-top: 0.5rem;
   }
+
+  .nav-mobile-cta:hover { color: var(--text-primary); }
 
   @media (max-width: 768px) {
     .nav-links, .nav-cta { display: none; }
@@ -171,13 +185,11 @@ import { navLinks } from '../data/nav';
 </style>
 
 <script>
-  // Scroll effect
   const nav = document.getElementById('nav')!;
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Mobile toggle
   const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
   const mobileMenu = document.getElementById('nav-mobile')!;
 
@@ -188,7 +200,6 @@ import { navLinks } from '../data/nav';
     mobileMenu.setAttribute('aria-hidden', String(open));
   });
 
-  // Close mobile menu on link click
   mobileMenu.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       toggle.setAttribute('aria-expanded', 'false');

@@ -14,14 +14,14 @@ test.describe('Homepage', () => {
     await expect(heading).toBeVisible();
   });
 
-  test('exibe o badge de disponibilidade', async ({ page }) => {
-    const badge = page.locator('.status-badge');
-    await expect(badge).toBeVisible();
-    await expect(badge).toContainText('Disponível');
+  test('exibe o indicador de disponibilidade', async ({ page }) => {
+    const avail = page.locator('.avail-row');
+    await expect(avail).toBeVisible();
+    await expect(avail).toContainText('Disponível');
   });
 
   test('foto de perfil ou iniciais estão visíveis', async ({ page }) => {
-    const photo = page.locator('.hero-photo');
+    const photo = page.locator('.photo-frame');
     await expect(photo).toBeVisible();
   });
 
