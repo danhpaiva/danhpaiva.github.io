@@ -8,7 +8,7 @@ Engenheiro de Software .NET | Sistemas Distribuídos | Cloud | Microserviços
 [![Deploy](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/deploy.yml)
 [![Lighthouse CI](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/lighthouse.yml)
 [![E2E Tests](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/e2e.yml/badge.svg)](https://github.com/danhpaiva/danhpaiva.github.io/actions/workflows/e2e.yml)
-[![Astro](https://img.shields.io/badge/Astro-5.x-BC52EE?logo=astro&logoColor=white)](https://astro.build)
+[![Astro](https://img.shields.io/badge/Astro-6.x-BC52EE?logo=astro&logoColor=white)](https://astro.build)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-22863a?logo=github)](https://danhpaiva.github.io)
 [![Node](https://img.shields.io/badge/Node.js-22.x-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
@@ -21,7 +21,7 @@ Engenheiro de Software .NET | Sistemas Distribuídos | Cloud | Microserviços
 
 ## Sobre o projeto
 
-Currículo web estático construído com **Astro 5**, design **dark tech** responsivo e otimizado para SEO. O deploy é totalmente automatizado via **GitHub Actions** para o GitHub Pages a cada push nas branches `main` e `develop`.
+Currículo web estático construído com **Astro 6**, layout **Bento Grid** responsivo e otimizado para SEO. O deploy é totalmente automatizado via **GitHub Actions** para o GitHub Pages a cada push nas branches `main` e `develop`.
 
 ### Funcionalidades
 
@@ -39,7 +39,7 @@ Currículo web estático construído com **Astro 5**, design **dark tech** respo
 
 | Tecnologia | Uso |
 |---|---|
-| [Astro 5](https://astro.build) | Framework — output 100% estático |
+| [Astro 6](https://astro.build) | Framework — output 100% estático |
 | CSS Custom Properties | Estilização sem frameworks |
 | Google Fonts (Inter + JetBrains Mono) | Tipografia |
 | GitHub Actions | CI/CD + Lighthouse CI automatizados |
