@@ -6,4 +6,5 @@ export default defineConfig({
   base: '/',
   output: 'static',
   integrations: [sitemap()],
+  devToolbar: { enabled: false },
 });
