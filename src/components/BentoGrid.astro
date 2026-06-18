@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import photo from '../assets/photo.jpg';
 import { stats, location, aboutLinks } from '../data/about';
 import { jobs } from '../data/experience';
 import { skillGroups, techBadges } from '../data/skills';
@@ -28,8 +30,9 @@ import { contactLinks } from '../data/contact';
   <!-- ── Photo ───────────────────────────────── -->
   <article class="cell cell-photo animate-fade-up" style="animation-delay:.08s" transition:name="cell-photo">
     <div class="photo-frame" id="photo-frame">
-      <img src="/photo.jpg" alt="Daniel Paiva" width="100" height="100"
-           onerror="this.parentElement.classList.add('no-photo')" />
+      <Image src={photo} alt="Daniel Paiva" width={160} height={160}
+             format="webp" quality={85}
+             onerror="this.parentElement.classList.add('no-photo')" />
       <div class="photo-fallback">DP</div>
     </div>
     <p class="photo-name">Daniel Paiva</p>
