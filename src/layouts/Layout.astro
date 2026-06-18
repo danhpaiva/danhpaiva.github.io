@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -43,6 +44,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <ClientRouter />
+
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
@@ -54,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "url": "https://danhpaiva.github.io",
         "email": "danpaiva@live.com",
         "sameAs": [
-          "https://www.linkedin.com/in/danhpaiva/?skipRedirect=true",
+          "https://www.linkedin.com/in/danhpaiva/",
           "https://github.com/danhpaiva",
           "https://t.me/danhpaiva"
         ],

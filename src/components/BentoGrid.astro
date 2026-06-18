@@ -9,7 +9,7 @@ import { contactLinks } from '../data/contact';
 <div class="bento">
 
   <!-- ── Name ────────────────────────────────── -->
-  <article class="cell cell-name animate-fade-up" id="inicio">
+  <article class="cell cell-name animate-fade-up" id="inicio" transition:name="cell-name">
     <p class="eyebrow">Software Engineer</p>
     <h1 class="big-name">Daniel<br>Paiva</h1>
     <p class="mono-title">
@@ -26,7 +26,7 @@ import { contactLinks } from '../data/contact';
   </article>
 
   <!-- ── Photo ───────────────────────────────── -->
-  <article class="cell cell-photo animate-fade-up" style="animation-delay:.08s">
+  <article class="cell cell-photo animate-fade-up" style="animation-delay:.08s" transition:name="cell-photo">
     <div class="photo-frame" id="photo-frame">
       <img src="/photo.jpg" alt="Daniel Paiva" width="100" height="100"
            onerror="this.parentElement.classList.add('no-photo')" />
