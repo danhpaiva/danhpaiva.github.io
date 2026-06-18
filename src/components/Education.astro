@@ -13,16 +13,13 @@ import { education } from '../data/education';
     <div class="edu-grid">
       {education.map((edu, i) => (
         <article
-          class={`edu-card card reveal`}
-          style={`transition-delay:${i * 0.15}s`}
+          class="edu-card reveal"
+          style={`transition-delay:${i * 0.12}s`}
           aria-label={`${edu.degree} em ${edu.field} — ${edu.institution}`}
         >
-          <div class={`edu-accent accent-${edu.color}`} aria-hidden="true"></div>
-
           <div class="edu-header">
-            <span class="edu-icon" aria-hidden="true">{edu.icon}</span>
             <div>
-              <span class={`edu-level level-${edu.color}`}>{edu.level}</span>
+              <span class="edu-level">{edu.level}</span>
               <p class="edu-institution">{edu.institution}</p>
             </div>
           </div>
@@ -30,21 +27,13 @@ import { education } from '../data/education';
           <h3 class="edu-field">{edu.field}</h3>
           <p class="edu-degree">{edu.degree}</p>
 
-          <p class="edu-period">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="18" rx="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            {edu.period}
-          </p>
+          <p class="edu-period">{edu.period}</p>
 
           <p class="edu-desc">{edu.description}</p>
 
           <div class="edu-skills">
             {edu.skills.map((skill) => (
-              <span class={`tag ${edu.color === 'cyan' ? 'cyan' : ''}`}>{skill}</span>
+              <span class="tag">{skill}</span>
             ))}
           </div>
         </article>
@@ -57,99 +46,83 @@ import { education } from '../data/education';
   .edu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 1.75rem;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   .edu-card {
-    position: relative;
-    overflow: hidden;
+    background: var(--bg-card);
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
+    transition: background var(--transition);
   }
 
-  .edu-accent {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    border-radius: 12px 12px 0 0;
-  }
-
-  .accent-blue { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
-  .accent-cyan { background: linear-gradient(90deg, var(--cyan), var(--purple)); }
+  .edu-card:hover { background: var(--bg-card-hover); }
 
   .edu-header {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.5rem;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
-  .edu-icon { font-size: 2rem; }
-
   .edu-institution {
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.3;
   }
 
   .edu-level {
     display: inline-block;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.65rem;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.15rem 0.6rem;
-    border-radius: 100px;
-    margin-bottom: 0.35rem;
-  }
-
-  .level-blue {
-    background: rgba(88,166,255,0.1);
-    border: 1px solid rgba(88,166,255,0.25);
-    color: var(--blue);
-  }
-
-  .level-cyan {
-    background: rgba(57,208,216,0.1);
-    border: 1px solid rgba(57,208,216,0.25);
-    color: var(--cyan);
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
   }
 
   .edu-field {
     font-size: 1.2rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-primary);
-    line-height: 1.3;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
   }
 
   .edu-degree {
-    font-size: 0.88rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .edu-period {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.82rem;
-    color: var(--text-muted);
     font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
   }
 
   .edu-desc {
-    font-size: 0.88rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
   .edu-skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
     margin-top: 0.25rem;
+  }
+
+  @media (max-width: 480px) {
+    .edu-grid { grid-template-columns: 1fr; }
   }
 </style>
