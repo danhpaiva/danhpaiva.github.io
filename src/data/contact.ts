@@ -19,8 +19,8 @@ export const contactLinks: ContactLink[] = [
   },
   {
     label:   'E-mail',
-    value:   'danpaiva@live.com',
-    href:    'mailto:danpaiva@live.com',
+    value:   'danhpaiva@outlook.com',
+    href:    'mailto:danhpaiva@outlook.com',
     icon:    `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>`,
     color:   'green',
     primary: false,
