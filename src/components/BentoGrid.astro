@@ -597,9 +597,13 @@ import { contactLinks } from '../data/contact';
   }
 
   // Stats: calc years from start year
-  const currentYear = new Date().getFullYear();
-  document.querySelectorAll<HTMLElement>('.stat-val[data-start-year]').forEach((el) => {
-    const y = Number(el.dataset.startYear);
-    if (y) el.textContent = `${currentYear - y}+`;
-  });
+  function calcStats() {
+    const currentYear = new Date().getFullYear();
+    document.querySelectorAll<HTMLElement>('.stat-val[data-start-year]').forEach((el) => {
+      const y = Number(el.dataset.startYear);
+      if (y) el.textContent = `${currentYear - y}+`;
+    });
+  }
+  calcStats();
+  document.addEventListener('astro:page-load', calcStats);
 </script>
