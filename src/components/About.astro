@@ -225,11 +225,14 @@ import { stats, location, aboutLinks } from '../data/about';
 </style>
 
 <script>
-  const currentYear = new Date().getFullYear();
-
-  document.querySelectorAll<HTMLElement>('.stat-value[data-start-year]').forEach((el) => {
-    const startYear = Number(el.dataset.startYear);
-    if (!startYear) return;
-    el.textContent = `${currentYear - startYear}+`;
-  });
+  function calcStats() {
+    const currentYear = new Date().getFullYear();
+    document.querySelectorAll<HTMLElement>('.stat-value[data-start-year]').forEach((el) => {
+      const startYear = Number(el.dataset.startYear);
+      if (!startYear) return;
+      el.textContent = `${currentYear - startYear}+`;
+    });
+  }
+  calcStats();
+  document.addEventListener('astro:page-load', calcStats);
 </script>
