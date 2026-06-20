@@ -44,7 +44,7 @@ test.describe('Links externos', () => {
 
   test('link de e-mail tem href mailto correto', async ({ page }) => {
     await expect(
-      page.locator('#contato a[href="mailto:danpaiva@live.com"]')
+      page.locator('#contato a[href="mailto:danhpaiva@outlook.com"]')
     ).toBeVisible();
   });
 
