@@ -29,6 +29,37 @@
 
   --section-py: clamp(5rem, 10vw, 8rem);
   --transition: 0.18s ease;
+
+  --stats-bg:       #eef2ff;
+  --stats-lbl:      #6366f1;
+  --nav-scrolled-bg: rgba(240, 240, 245, 0.92);
+  --nav-mobile-bg:   rgba(240, 240, 245, 0.97);
+}
+
+/* ─── Dark theme ─────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-base:        #0d0d0f;
+  --bg-surface:     #141416;
+  --bg-card:        #161618;
+  --bg-card-hover:  #1e1e22;
+  --border:         #272730;
+  --border-hover:   #38384a;
+
+  --text-primary:   #ededea;
+  --text-secondary: #9b9b93;
+  --text-muted:     #5a5a54;
+
+  --accent:         #6366f1;
+  --accent-hover:   #818cf8;
+  --accent-subtle:  rgba(99, 102, 241, 0.12);
+  --accent-border:  rgba(99, 102, 241, 0.3);
+
+  --stats-bg:       #1a1a2e;
+  --stats-lbl:      #818cf8;
+  --nav-scrolled-bg: rgba(13, 13, 15, 0.92);
+  --nav-mobile-bg:   rgba(20, 20, 22, 0.97);
+
+  color-scheme: dark;
 }
 
 html {

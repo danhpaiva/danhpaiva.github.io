@@ -16,6 +16,17 @@ import { navLinks } from '../data/nav';
       ))}
     </ul>
 
+    <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro">
+      <!-- Sun: visible in dark mode -->
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+      <!-- Moon: visible in light mode -->
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+
     <a
       href="https://www.linkedin.com/in/danhpaiva/"
       target="_blank"
@@ -61,7 +72,7 @@ import { navLinks } from '../data/nav';
   }
 
   nav.scrolled {
-    background: rgba(244, 242, 237, 0.92);
+    background: var(--nav-scrolled-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-color: var(--border);
@@ -121,6 +132,34 @@ import { navLinks } from '../data/nav';
     border-color: var(--accent);
   }
 
+  /* ── Theme toggle ── */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    background: var(--accent-subtle);
+  }
+
+  .theme-toggle .icon-sun  { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+
+  :global([data-theme="dark"]) .theme-toggle .icon-sun  { display: block; }
+  :global([data-theme="dark"]) .theme-toggle .icon-moon { display: none; }
+
   .nav-toggle {
     display: none;
     flex-direction: column;
@@ -147,7 +186,7 @@ import { navLinks } from '../data/nav';
 
   .nav-mobile {
     display: none;
-    background: rgba(244, 242, 237, 0.97);
+    background: var(--nav-mobile-bg);
     border-top: 1px solid var(--border);
     padding: 1.25rem 1.5rem 1.5rem;
   }
@@ -185,7 +224,19 @@ import { navLinks } from '../data/nav';
 </style>
 
 <script>
-  const nav = document.getElementById('nav')!;
+  // ── Theme toggle ──────────────────────────────────────
+  const btn = document.getElementById('theme-toggle') as HTMLButtonElement;
+  if (btn && !btn.dataset.bound) {
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') ?? 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
+
+  const nav = document.getElementById('nav')!
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
