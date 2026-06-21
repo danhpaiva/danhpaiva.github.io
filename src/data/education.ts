@@ -2,6 +2,20 @@ import type { EducationEntry } from './types';
 
 export const education: EducationEntry[] = [
   {
+    degree:      'Especialização',
+    field:       'Inteligência Artificial',
+    institution: 'Universidade Tecnológica Federal do Paraná',
+    period:      'Jun 2026 – Dez 2027',
+    level:       'Specialist',
+    color:       'purple',
+    icon:        '🤖',
+    description: 'Especialização em Inteligência Artificial com foco em algoritmos de IA, machine learning e desenvolvimento com Python.',
+    skills: [
+      'Inteligência Artificial', 'Machine Learning', 'Python', 'Deep Learning',
+      'Redes Neurais', 'Ciência de Dados',
+    ],
+  },
+  {
     degree:      'Pós-Graduação',
     field:       'Arquitetura de Software Distribuído',
     institution: 'PUC Minas',

@@ -11,8 +11,8 @@ export const jobs: Job[] = [
     current:  true,
     color:    'blue',
     highlights: [
-      'Arquitetura de microserviços com <strong>.NET 10</strong> do zero, aplicando Clean Architecture e separação de responsabilidades.',
-      'Autenticação e autorização robusta com <strong>AWS Cognito + JwtBearer</strong> para gestão segura de identidades.',
+      'Desenvolvimento de Web APIs e funções <strong>AWS Lambda</strong> com <strong>.NET 10</strong>, aplicando Clean Architecture e padrões serverless orientados a eventos.',
+      'Autenticação e autorização robusta com <strong>AWS Cognito + JwtBearer</strong> para gestão segura de identidades em APIs e funções serverless.',
       'Camada de persistência de alta performance com <strong>Dapper + SQL Server</strong>, otimizando tempo de resposta das APIs.',
       'Integração com <strong>Amazon S3</strong> para storage automatizado e <strong>Amazon SES</strong> para comunicação transacional.',
       'Infraestrutura como Código (IaC) com <strong>CloudFormation (YAML)</strong> e monitoramento via Application Insights.',
@@ -21,7 +21,7 @@ export const jobs: Job[] = [
       'Comunicação legada segura com servidores de arquivos via <strong>SFTP (SSH.NET)</strong>.',
     ],
     stack: [
-      '.NET 10', 'ASP.NET Core', 'C#', 'Dapper', 'SQL Server',
+      '.NET 10', 'ASP.NET Core', 'C#', 'AWS Lambda', 'Dapper', 'SQL Server',
       'AWS S3', 'AWS SES', 'Cognito', 'CloudFormation',
       'Docker', 'Flyway', 'Serilog', 'Sonar',
     ],
@@ -57,12 +57,11 @@ export const jobs: Job[] = [
     current:  false,
     color:    'cyan',
     highlights: [
+      'Desenvolvimento com <strong>.NET Core 3.1 / .NET 8+</strong>, TDD, DDD e SonarQube em ambiente CI/CD com Azure DevOps.',
+      'Mensageria com <strong>RabbitMQ</strong>, cache com <strong>Redis</strong> e modelagem de dados SQL e NoSQL.',
       '<strong>Code review</strong> e apoio estratégico nas decisões técnicas do time de desenvolvimento.',
-      'Estimativas de prazo com <strong>planning poker</strong> e priorização de backlog.',
       'Manutenção de ambientes <strong>Docker</strong> e suporte a pipelines com <strong>Azure DevOps</strong>.',
-      'Desenvolvimento com <strong>.NET Core 3.1 / .NET 8+</strong>, CI/CD, SonarQube e TDD.',
-      'Mensageria com <strong>RabbitMQ</strong>, cache com <strong>Redis</strong> e arquitetura DDD.',
-      'Modelagem de dados com <strong>SQL e NoSQL</strong>.',
+      'Estimativas de prazo com <strong>planning poker</strong> e priorização de backlog.',
     ],
     stack: [
       '.NET 8', 'C#', 'Azure DevOps', 'Docker',
