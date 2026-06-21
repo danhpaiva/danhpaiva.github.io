@@ -107,7 +107,7 @@ import { contactLinks } from '../data/contact';
   </article>
 
   <!-- ── Experience ──────────────────────────── -->
-  <article class="cell cell-experience reveal" id="experiencia">
+  <article class="cell cell-experience reveal" id="experiencia" aria-label="Experiência profissional">
     <p class="eyebrow">Experiência</p>
     <div class="exp-list">
       {jobs.map((job, i) => (
@@ -138,7 +138,7 @@ import { contactLinks } from '../data/contact';
   </article>
 
   <!-- ── Skills ──────────────────────────────── -->
-  <article class="cell cell-skills reveal" id="skills">
+  <article class="cell cell-skills reveal" id="skills" aria-label="Habilidades técnicas">
     <p class="eyebrow">Skills</p>
     <div class="skills-wrap">
       {skillGroups.map((group) => (
@@ -153,7 +153,7 @@ import { contactLinks } from '../data/contact';
   </article>
 
   <!-- ── Education ───────────────────────────── -->
-  <article class="cell cell-education reveal" id="educacao">
+  <article class="cell cell-education reveal" id="educacao" aria-label="Formação acadêmica">
     <p class="eyebrow">Educação</p>
     <div class="edu-list">
       {education.map((edu, i) => (
@@ -175,7 +175,7 @@ import { contactLinks } from '../data/contact';
   </article>
 
   <!-- ── Contact ─────────────────────────────── -->
-  <article class="cell cell-contact reveal" id="contato">
+  <article class="cell cell-contact reveal" id="contato" aria-label="Links de contato">
     <div class="contact-list">
       {contactLinks.map((link) => (
         <a href={link.href}
@@ -377,7 +377,7 @@ import { contactLinks } from '../data/contact';
 
   /* ── Stats cell (indigo tint) ────────────────────── */
   .stat {
-    background: #eef2ff;
+    background: var(--stats-bg);
     padding: 1.25rem 0.75rem;
     display: flex; flex-direction: column;
     align-items: center; text-align: center; gap: 0.3rem;
@@ -390,7 +390,7 @@ import { contactLinks } from '../data/contact';
   }
 
   .stat-lbl {
-    font-size: 0.65rem; color: #6366f1;
+    font-size: 0.65rem; color: var(--stats-lbl);
     text-align: center; line-height: 1.3;
     opacity: 0.7;
   }
