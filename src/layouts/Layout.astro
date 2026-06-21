@@ -23,6 +23,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
+    <meta name="color-scheme" content="light dark" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -83,6 +84,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
 
   <body>
+    <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
     <slot />
 
     <!-- Scroll reveal observer -->

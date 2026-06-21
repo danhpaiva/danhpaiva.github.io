@@ -47,7 +47,7 @@
 
   --text-primary:   #ededea;
   --text-secondary: #9b9b93;
-  --text-muted:     #5a5a54;
+  --text-muted:     #7a7a74; /* #5a5a54 falha WCAG AA — ratio ~3:1; #7a7a74 ≈ 5:1 */
 
   --accent:         #6366f1;
   --accent-hover:   #818cf8;
@@ -85,9 +85,47 @@ body {
   border-radius: 2px;
 }
 
+/* ─── Skip link ──────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0 0 6px 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ─── Focus ring ─────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* ─── Selection ─────────────────────────────────────── */
 ::selection {
   background: rgba(26, 26, 24, 0.1);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] ::selection {
+  background: rgba(99, 102, 241, 0.25);
   color: var(--text-primary);
 }
 
@@ -321,6 +359,25 @@ img { max-width: 100%; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
+}
+
+/* ─── High contrast ──────────────────────────────────── */
+@media (prefers-contrast: more) {
+  :root {
+    --border:         #888;
+    --border-hover:   #555;
+    --text-muted:     #555;
+    --text-secondary: #333;
+    --accent-border:  rgba(79, 70, 229, 0.6);
+  }
+
+  [data-theme="dark"] {
+    --border:         #666;
+    --border-hover:   #999;
+    --text-muted:     #bbb;
+    --text-secondary: #ddd;
+    --accent-border:  rgba(129, 140, 248, 0.6);
+  }
 }
 
 /* ─── Responsive ─────────────────────────────────────── */

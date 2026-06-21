@@ -114,6 +114,7 @@ import { navLinks } from '../data/nav';
   }
 
   .nav-link:hover { color: var(--accent); }
+  .nav-link[aria-current="true"] { color: var(--accent); }
 
   .nav-cta {
     font-size: 0.82rem;
@@ -236,26 +237,81 @@ import { navLinks } from '../data/nav';
     });
   }
 
-  const nav = document.getElementById('nav')!
+  const nav = document.getElementById('nav')!;
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // ── Mobile menu ────────────────────────────────────────
   const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
   const mobileMenu = document.getElementById('nav-mobile')!;
+
+  function closeMobileMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
 
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!open));
     mobileMenu.classList.toggle('open', !open);
     mobileMenu.setAttribute('aria-hidden', String(open));
+    if (!open) {
+      // Focus first link when opening
+      (mobileMenu.querySelector('a') as HTMLElement)?.focus();
+    }
   });
 
   mobileMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      mobileMenu.classList.remove('open');
-      mobileMenu.setAttribute('aria-hidden', 'true');
-    });
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  // Escape fecha o menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      closeMobileMenu();
+      toggle.focus();
+    }
+  });
+
+  // Focus trap no menu mobile
+  mobileMenu.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(
+      mobileMenu.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => !el.hasAttribute('disabled'));
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  // ── Scrollspy: aria-current ────────────────────────────
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link[href^="#"]');
+  const sectionIds = Array.from(navLinks).map((l) => l.getAttribute('href')!.slice(1));
+
+  const spyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navLinks.forEach((l) => {
+          const active = l.getAttribute('href') === `#${id}`;
+          l.setAttribute('aria-current', active ? 'true' : 'false');
+        });
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+  );
+
+  sectionIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) spyObserver.observe(el);
   });
 </script>
