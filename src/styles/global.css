@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap');
-
 /* ─── Reset ─────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -17,7 +15,7 @@
 
   --text-primary:   #1a1a18;
   --text-secondary: #5c5c56;
-  --text-muted:     #a8a49a;
+  --text-muted:     #6b6b64; /* era #a8a49a — ratio ~2.3:1, falha WCAG AA; #6b6b64 ≈ 4.8:1 */
 
   --accent:         #4f46e5;
   --accent-hover:   #4338ca;
@@ -31,7 +29,7 @@
   --transition: 0.18s ease;
 
   --stats-bg:       #eef2ff;
-  --stats-lbl:      #6366f1;
+  --stats-lbl:      #4f46e5; /* era #6366f1 — ratio ~4.4:1 contra #eef2ff; #4f46e5 ≈ 5:1 */
   --nav-scrolled-bg: rgba(240, 240, 245, 0.92);
   --nav-mobile-bg:   rgba(240, 240, 245, 0.97);
 }
