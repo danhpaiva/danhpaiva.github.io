@@ -73,9 +73,9 @@ test.describe('Seções do currículo', () => {
     await expect(page.locator('#educacao')).toContainText('Educação');
   });
 
-  test('exibe os 2 itens de formação', async ({ page }) => {
+  test('exibe os 3 itens de formação', async ({ page }) => {
     const cards = page.locator('#educacao .edu-item');
-    await expect(cards).toHaveCount(2);
+    await expect(cards).toHaveCount(3);
   });
 
   test('PUC Minas está na educação', async ({ page }) => {
@@ -86,7 +86,7 @@ test.describe('Seções do currículo', () => {
 
   test('célula Contato está presente', async ({ page }) => {
     await expect(page.locator('#contato')).toBeVisible();
-    await expect(page.locator('#contato')).toContainText('Contato');
+    await expect(page.locator('#contato')).toContainText('LinkedIn');
   });
 
   test('exibe os 4 links de contato', async ({ page }) => {
