@@ -176,7 +176,6 @@ import { contactLinks } from '../data/contact';
 
   <!-- ── Contact ─────────────────────────────── -->
   <article class="cell cell-contact reveal" id="contato">
-    <p class="eyebrow">Contato</p>
     <div class="contact-list">
       {contactLinks.map((link) => (
         <a href={link.href}
@@ -240,7 +239,7 @@ import { contactLinks } from '../data/contact';
   .cell-experience { grid-area: exp; }
   .cell-skills     { grid-area: skills; }
   .cell-education  { grid-area: edu; }
-  .cell-contact    { grid-area: contact; padding: 0; overflow: hidden; }
+  .cell-contact    { grid-area: contact; padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
 
   /* ── Eyebrow label ───────────────────────────────── */
   .eyebrow {
